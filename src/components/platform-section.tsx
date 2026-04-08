@@ -5,8 +5,9 @@ export default function PlatformSection() {
                 className="container-shell"
                 style={{
                     display: "grid",
-                    gap: "24px",
+                    gap: "32px",
                     alignItems: "start",
+                    gridTemplateColumns: "1.1fr 1fr",
                 }}
             >
                 <div className="section-heading" style={{ marginBottom: 0 }}>
@@ -25,7 +26,6 @@ export default function PlatformSection() {
                     style={{
                         display: "grid",
                         gap: "24px",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
                     }}
                 >
                     <div className="info-card">
@@ -40,7 +40,10 @@ export default function PlatformSection() {
 
                     <div className="info-card">
                         <h3>Scalability</h3>
-                        <p>Build a stronger foundation for teams shipping and growing API products.</p>
+                        <p>
+                            Build a stronger foundation for teams shipping and growing API
+                            products.
+                        </p>
                     </div>
                 </div>
             </div>

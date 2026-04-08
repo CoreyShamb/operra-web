@@ -7,9 +7,9 @@ export default function Hero() {
                     <h1 className="section-title" style={{ fontSize: "clamp(3rem, 7vw, 5rem)" }}>
                         Build, Secure, and Scale Your APIs
                     </h1>
-                    <p className="section-description" style={{ maxWidth: "640px" }}>
-                        Operra gives modern teams the infrastructure layer to manage API
-                        access, monitor usage, enforce limits, and operate with confidence.
+                    <p className="section-description" style={{ maxWidth: "560px" }}>
+                        Operra gives modern teams the infrastructure layer to manage API access,
+                        monitor usage, enforce limits, and operate with confidence.
                     </p>
 
                     <div className="button-row" style={{ marginTop: "32px" }}>
