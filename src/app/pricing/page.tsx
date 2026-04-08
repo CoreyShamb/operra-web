@@ -1,14 +1,27 @@
 export default function PricingPage() {
     const plans = [
         {
+            name: "Free",
+            price: "$0",
+            description: "Get started and explore the Operra platform with basic usage.",
+            features: [
+                "1 organization",
+                "Up to 1,000 requests/month",
+                "API key management",
+                "Basic rate limiting",
+                "Community support",
+            ],
+            cta: "Get Started Free",
+            featured: false,
+        },
+        {
             name: "Starter",
             price: "$19",
             description: "For early-stage projects validating usage and API demand.",
             features: [
-                "1 organization",
-                "API key management",
+                "Everything in Free",
+                "Up to 50,000 requests/month",
                 "Basic analytics",
-                "Rate limiting",
                 "Email support",
             ],
             cta: "Start Starter",
@@ -20,9 +33,8 @@ export default function PricingPage() {
             description: "For growing SaaS products that need visibility and control.",
             features: [
                 "Everything in Starter",
-                "Advanced usage analytics",
-                "Higher request limits",
-                "Organization controls",
+                "Advanced analytics",
+                "Higher rate limits",
                 "Priority support",
             ],
             cta: "Start Growth",
@@ -37,7 +49,6 @@ export default function PricingPage() {
                 "Enhanced reporting",
                 "Higher scale limits",
                 "Team access workflows",
-                "Premium support",
             ],
             cta: "Start Business",
             featured: false,
@@ -49,7 +60,6 @@ export default function PricingPage() {
             features: [
                 "Everything in Business",
                 "Multi-team support",
-                "Operational controls",
                 "Custom onboarding",
                 "Dedicated support",
             ],
@@ -130,6 +140,18 @@ export default function PricingPage() {
                                     <span style={{ color: "#a1a1aa" }}>/mo</span>
                                 </div>
 
+                                {plan.name === "Free" && (
+                                    <span style={{
+                                        fontSize: "0.75rem",
+                                        color: "#22c55e",
+                                        display: "block",
+                                        marginBottom: "10px",
+                                        fontWeight: 500,
+                                    }}>
+                                        <strong>No credit card required</strong>
+                                    </span>
+                                )}
+
                                 <p style={{ margin: 0, color: "#a1a1aa", lineHeight: 1.7 }}>
                                     {plan.description}
                                 </p>
@@ -153,7 +175,7 @@ export default function PricingPage() {
                             </div>
 
                             <a
-                                href="/signup"
+                                href={`/signup?plan=${encodeURIComponent(plan.name.toLowerCase())}`}
                                 className={plan.featured ? "btn-primary" : "btn-secondary"}
                                 style={{ width: "100%" }}
                             >
