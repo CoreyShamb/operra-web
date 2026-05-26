@@ -21,3 +21,15 @@ export type AuthResponse = {
     user: User;
     token: string;
 };
+
+export type ApiAuthResponse = {
+    success: boolean;
+    message: string;
+    data: AuthResponse;
+};
+
+export type ApiRegisterResponse = {
+    success: boolean;
+    message: string;
+    data: User;
+};

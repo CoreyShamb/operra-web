@@ -1,25 +1,47 @@
 import { apiClient } from "@/lib/api/client";
-import { AuthResponse, LoginInput, RegisterInput, User } from "@/types/auth";
+import type {
+    ApiAuthResponse,
+    ApiRegisterResponse,
+    AuthResponse,
+    LoginInput,
+    RegisterInput,
+    User,
+} from "@/types/auth";
 
-export function loginUser(input: LoginInput) {
-    return apiClient<AuthResponse>("/auth/login", {
+export async function loginUser(input: LoginInput): Promise<AuthResponse> {
+    const response = await apiClient<ApiAuthResponse>("/auth/login", {
         method: "POST",
         auth: false,
         body: JSON.stringify(input),
     });
+
+    return response.data;
 }
 
-export function registerUser(input: RegisterInput) {
-    return apiClient<AuthResponse>("/auth/register", {
+export async function registerUser(input: RegisterInput): Promise<AuthResponse> {
+    await apiClient<ApiRegisterResponse>("/auth/register", {
         method: "POST",
         auth: false,
         body: JSON.stringify(input),
     });
+
+    const loginResponse = await loginUser({
+        email: input.email,
+        password: input.password,
+    });
+
+    return loginResponse;
 }
 
-export function getCurrentUser() {
-    return apiClient<User>("/auth/me", {
+export async function getCurrentUser(): Promise<User> {
+    const response = await apiClient<{
+        success: boolean;
+        message: string;
+        data: User;
+    }>("/auth/me", {
         method: "GET",
         auth: true,
     });
+
+    return response.data;
 }
